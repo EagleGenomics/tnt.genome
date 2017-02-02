@@ -241,6 +241,7 @@ var tnt_feature_gene = function () {
             })
             .attr("height", feature.layout().gene_slot().gene_height)
             .attr("fill", track.color())
+	    .style("stroke", (feature.border_color() == undefined ? feature.color() : feature.border_color() ))
             .transition()
             .duration(500)
             .attr("fill", function (d) {
@@ -260,7 +261,7 @@ var tnt_feature_gene = function () {
             .attr("y", function (d) {
                 return (feature.layout().gene_slot().slot_height * d.slot) + 25;
             })
-            .attr("fill", track.color())
+            .attr("fill", (feature.text_color() == undefined ? feature.color() : feature.text_color() ))
             .text(function (d) {
                 if (feature.layout().gene_slot().show_label) {
                     return d.display_label;
@@ -272,7 +273,7 @@ var tnt_feature_gene = function () {
             .transition()
             .duration(500)
             .attr("fill", function() {
-                return feature.color();
+                return (feature.text_color() == undefined ? feature.color() : feature.text_color() );
             });
     });
 
